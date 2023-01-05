@@ -1,14 +1,15 @@
 library(ggplot2)
+set.seed(69)
 
 # Flexibility constants
-k_a <- 10 
-k_b <- 1
-k_c <- 100
+k_1 <- 1
+k_2 <- 10
+k_3 <- 100
 
 # Other parameters
-n_a <- n_b <- n_c <- 200 # initial number of workers
+n_1 <- n_2 <- n_3 <- 200 # initial number of workers
 threshold <- 5 # how low the health can go before the company goes bankrupt
-graph_step <- 4 # when to save the graph
+graph_step <- 4000 # when to save the graph
 
 # Backend parameters (don't touch!)
 t_a <- 0.3 # start time
@@ -26,57 +27,103 @@ choice <- function(delta_n, delta_health, k) {
 	return((delta_n >= 0 && delta_health >= 0) | (delta_n <= 0 && p < exp(delta_n/k)))
 }
 
+engine <- function(t, n, k, alive) {
+	delta_health <- health(t, n + proposal) - health(t, n)
+	if (!(choice(proposal, delta_health, k)))
+		proposal <- 0
+	n <- n + proposal
+	
+	h <- health(t, n)
+	if (h < threshold) {
+		alive <- FALSE
+		h <- 0
+	} else {
+		plot <<- plot + geom_point(aes(n, h, col = paste(k, "thatchers")))
+	}
+	
+	return(list(proposal, h, alive))
+}
+
 
 t <- t_a
-p <- 0
-a_alive <- b_alive <- c_alive <- TRUE
+p <- 1
+alive_1 <- alive_2 <- alive_3 <- TRUE
+rows <- (t_b - t_a) / t_step
+stats_1 <- stats_2 <- stats_3 <- data.frame(n=rep(NA, rows), delta_n=rep(NA, rows), health=rep(NA, rows), stringsAsFactors=FALSE)
+
 while (t >= t_a) {
-	plot <- ggplot() + xlim(c(0,500)) + xlab("n") + ylim(c(0,150)) + ylab("Health") +
-		stat_function(fun = health, args = list(t = t)) + labs(col = "Empresa") 
+	plot <- ggplot() + xlim(c(0,500)) + xlab("Nº de trabalhadores") + ylim(c(0,150)) + ylab("Receita") +
+		stat_function(fun = health, args = list(t = t)) + labs(col = "Austeridade") + scale_color_manual(values=c("red", "green", "blue"))
 	
 	proposal <- runif(1, -oddness, oddness)
 	
-	if (a_alive) {
-		delta_health_a <- health(t, n_a + proposal) - health(t, n_a)
-		if (choice(proposal, delta_health_a, k_a))
-			n_a <- n_a + proposal
-		if (health(t, n_a) < threshold) {
-			a_alive <- FALSE
-		} else {
-			plot <- plot + geom_point(aes(n_a, health(t, n_a), col = "A"))
-		}
+	if (alive_1) {
+		e1 <- engine(t, n_1, k_1, alive_1)
+
+		stats_1[p, 1] <- n_1 <- n_1 + e1[[1]]
+		stats_1[p, 2] <- e1[[1]]
+		stats_1[p, 3] <- e1[[2]]
+		alive_1 <- e1[[3]]
+	} else {
+		stats_1[p, ] <- list(0,NA,0)
 	}
 	
-	if (b_alive) {
-		delta_health_b <- health(t, n_b + proposal) - health(t, n_b)
-		if (choice(proposal, delta_health_b, k_b))
-			n_b <- n_b + proposal
-		if (health(t, n_b) < threshold) {
-			b_alive <- FALSE
-		} else {
-			plot <- plot + geom_point(aes(n_b, health(t, n_b), col = "B"))
-		}
+	if (alive_2) {
+		e2 <- engine(t, n_2, k_2, alive_2)
+		
+		stats_2[p, 1] <- n_2 <- n_2 + e2[[1]]
+		stats_2[p, 2] <- e2[[1]]
+		stats_2[p, 3] <- e2[[2]]
+		alive_2 <- e2[[3]]
+	} else {
+		stats_2[p, ] <- list(0,NA,0)
 	}
 	
-	if (c_alive) {
-		delta_health_c <- health(t, n_c + proposal) - health(t, n_c)
-		if (choice(proposal, delta_health_c, k_c))
-			n_c <- n_c + proposal
-		if (health(t, n_c) < threshold) {
-			c_alive <- FALSE
-		} else {
-			plot <- plot + geom_point(aes(n_c, health(t, n_c), col = "C"))
-		}
+	if (alive_3) {
+		e3 <- engine(t, n_3, k_3, alive_3)
+
+		stats_3[p, 1] <- n_3 <- n_3 + e3[[1]]
+		stats_3[p, 2] <- e3[[1]]
+		stats_3[p, 3] <- e3[[2]]
+		alive_3 <- e3[[3]]
+	} else {
+		stats_3[p, ] <- list(0,NA,0)
 	}
 	
-	if (!(a_alive | b_alive | c_alive))
-		stop("Dead")
+	
+	if (!(alive_1 | alive_2 | alive_3))
+		stop("Game over")
 	
 	if (p %% graph_step == 0)
 		ggsave(paste("plot", p, ".jpg", sep=""))
 	p <- p + 1
-	t <- t + t_step
 	
+	t <- t + t_step
 	if (isTRUE(all.equal(t, t_b)))
 		t_step <- -t_step
 }
+
+
+ggplot() + xlab("Worker flux") + ylab("N") + xlim(c(-oddness, oddness)) + ylim(c(0,p)) + 
+	geom_histogram(aes(stats_1$delta_n), binwidth=1)
+ggsave("hist_1.jpg")
+
+ggplot() + xlab("Worker flux") + ylab("N") + xlim(c(-oddness, oddness)) + ylim(c(0,p)) + 
+	geom_histogram(aes(stats_2$delta_n), binwidth=1)
+ggsave("hist_2.jpg")
+
+ggplot() + xlab("Worker flux") + ylab("N") + xlim(c(-oddness, oddness)) + ylim(c(0,p)) +
+	geom_histogram(aes(stats_3$delta_n), binwidth=1)
+ggsave("hist_3.jpg")
+
+ggplot() + labs(col = "k") + xlab("Time") + ylab("Health") +
+	geom_line(data=stats_1, aes(x=as.numeric(row.names(stats_1)), y=health, col=toString(k_1))) +
+	geom_line(data=stats_2, aes(x=as.numeric(row.names(stats_2)), y=health, col=toString(k_2))) +
+	geom_line(data=stats_3, aes(x=as.numeric(row.names(stats_3)), y=health, col=toString(k_3))) + scale_color_manual(values=c("red", "green", "blue"))
+ggsave("health.jpg")
+
+ggplot() + labs(col = "k") + xlab("Time") + ylab("Workers") +
+	geom_line(data=stats_1, aes(x=as.numeric(row.names(stats_1)), y=n, col=toString(k_1))) +
+	geom_line(data=stats_2, aes(x=as.numeric(row.names(stats_2)), y=n, col=toString(k_2))) +
+	geom_line(data=stats_3, aes(x=as.numeric(row.names(stats_3)), y=n, col=toString(k_3))) + scale_color_manual(values=c("red", "green", "blue"))
+ggsave("workers.jpg")
