@@ -12,7 +12,7 @@ t_step <- 0.001 # timestep
 oddness <- 30 # how radical the proposals are (i.e. the max. amount of workers that can get hired/fired per timestep)
 
 # Misc
-graph_step <- 20 # generate a health plot every n timesteps
+graph_step <- 10 # generate a health plot every nth timestep
 Colors <- c("#aa55ff", "#ffaa00", "#ff007f") # colors
 names(Colors) = K
 
@@ -37,7 +37,8 @@ get_results <- function(t, n, k, death) {
 		death <- m
 		h <- 0
 	} else {
-		plot <<- plot + geom_point(aes(n, h, col=toString(k)), size=3)
+		plot <<- plot + geom_point(aes(n, h, col=toString(k)), size=3) +
+			annotate(geom="text", x=450, y=140, label=paste("step =", m))
 	}
 	
 	return(c(proposal, h, death))
