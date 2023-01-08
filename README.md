@@ -1,4 +1,4 @@
-# Simulação de Monte Carlo simples para isolar e ilustrar o efeito da disposição para despedir trabalhadores numa empresa em recessão.
+# Simulação de Monte Carlo simples para isolar e ilustrar o efeito da disposição para despedir trabalhadores numa empresa em recessão
 
 ## Função de modelo
 
