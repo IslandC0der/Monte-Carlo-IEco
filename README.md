@@ -26,36 +26,42 @@ Ao executar `Rscript simul.R`, a simulação é corrida em paralelo para todas a
 ## Gráficos
 <figure>
 <img src="evolução.gif">
-<figcaption align = "center"><b>Overview de uma simulação para 3 empresas</b></figcaption>
+<p align = "center"><b>Overview de uma simulação para 3 empresas</b></p>
 </figure>
+<br/>
 
 <figure>
 <img src="trabalhadores.jpg">
-<figcaption align = "center"><b>Corte de R em t</b></figcaption>
+<p align = "center"><b>Corte de R em t</b></p>
 </figure>
+<br/>
 
 <figure>
 <img src="rentabilidade.jpg">
-<figcaption align = "center"><b>Corte de R em n</b></figcaption>
+<p align = "center"><b>Corte de R em n</b></p>
 </figure>
 
 <figure>
 <img src="emprego.jpg">
-<figcaption align = "center"><b>Emprego marginal até à 1ª falência</b></figcaption>
+<p align = "center"><b>Emprego marginal até à 1ª falência</b></p>
 </figure>
+<br/>
 
 <figure>
 <img src="fluxo_1.jpg">
-<figcaption align = "center"><b>Histograma das `Δn` aceites para `k = 1`</b></figcaption>
+<p align = "center"><b>Histograma das <code>Δn</code> aceites para <code>k = 1</code></b></p>
 </figure>
+<br/>
 
 <figure>
 <img src="fluxo_2.jpg">
-<figcaption align = "center"><b>Histograma das `Δn` aceites para `k = 1`</b></figcaption>
+<p align = "center"><b>Histograma das <code>Δn</code> aceites para <code>k = 1</code></b></p>
 </figure>
+<br/>
 
 <figure>
 <img src="fluxo_3.jpg">
-<figcaption align = "center"><b>Histograma das `Δn` aceites para `k = 1`</b></figcaption>
+<p align = "center"><b>Histograma das <code>Δn</code> aceites para <code>k = 1</code></b></p>
 </figure>
+<br/>
 
