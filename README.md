@@ -1,4 +1,4 @@
-# Simulação de Monte Carlo simples para isolar e ilustrar o efeito da disposição para despedir trabalhadores na evolução de duas empresas idênticas num contexto de recessão.
+# Simulação de Monte Carlo simples para isolar e ilustrar o efeito da disposição para despedir trabalhadores numa empresa em recessão.
 
 ## Função de modelo
 
@@ -8,9 +8,9 @@ Começa-se por definir uma curva que relaciona a rentabilidade económica de uma
 
 Por cada timestep, gera-se aleatoriamente uma proposta para o novo nº de trabalhadores, e calcula-se o `ΔR` em relação ao timestep anterior.
 
-Se ΔR for positivo, a empresa aceita automaticamente a proposta. Se for negativo, aceita com probalidade `P = exp(ΔR/k`), sendo `k` a constante que mede a disposição da empresa em despedir trabalhadores.
+Se ΔR for positivo, a empresa aceita automaticamente a proposta. Se for negativo, aceita com probalidade `P = exp(ΔR/k)`, sendo `k` a constante que mede a disposição da empresa em despedir trabalhadores.
 
-Esta função de probabilidade vem de uma adaptação do critério de Metrópolis, P = min(1,exp(-ΔE/T)).
+Esta função de probabilidade vem de uma adaptação do [critério de Metrópolis](http://csg.sph.umich.edu/abecasis/class/2006/615.19.pdf), `P = min(1,exp(-ΔE/T))`.
 Normalmente é usado em simulações de redes cristalinas, em que a função modelo `E` é a energia da rede cristalina, e `T` a temperatura. O critério reflete o facto de que um sistema tende a diminuir a sua energia se possível (`P = 1` se `ΔE < 0`), e que temperaturas maiores permitem aceder estados energéticos mais altos e instáveis.
 
 ## Código
@@ -21,4 +21,14 @@ Ao executar `python simul.py`, a simulação é corrida para uma empresa, e dá 
 
 ### R
 O ficheiro `simul.R` contém, adicionalmente, toda a maquinaria para gerar gráficos.
-Ao executar `python simul.py`, a simulação é corrida em paralelo para todas as empresas, e gera-se um gráfico com a posição das empresas na curva `R` por cada `graph_step`. No final, são gerados vários gráficos relevantes, como os cortes de `R` em relação a `t` e `n` para cada empresa.
+Ao executar `Rscript simul.R`, a simulação é corrida em paralelo para todas as empresas, e gera-se um gráfico com a posição das empresas na curva `R` por cada `graph_step`. No final, são gerados vários gráficos relevantes, como os cortes de `R` em relação a `t` e `n` para cada empresa.
+
+## Gráficos
+![Overview de uma simulação para 3 empresas](./evolução.gif)
+![Corte de R em t](./trabalhadores.jpg)
+![Corte de R em n](./rentabilidade.jpg)
+![Emprego marginal até à falência da 1ª empresa](./emprego.jpg)
+![Histograma das `Δn` aceites para `k = 1`](./fluxo_1.jpg)
+![Histograma das `Δn` aceites para `k = 2`](./fluxo_2.jpg)
+![Histograma das `Δn` aceites para `k = 3`](./fluxo_3.jpg)
+
