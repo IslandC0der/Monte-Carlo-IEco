@@ -65,14 +65,14 @@ No final, são gerados vários gráficos relevantes, como os cortes de `R` em re
 
 <figure>
 <img src="fluxo_2.jpg">
-<h2 align = "center"><b>Histograma das <code>Δn</code> aceites para <code>k = 1</code></b></p>
+<h2 align = "center"><b>Histograma das <code>Δn</code> aceites para <code>k = 10</code></b></p>
 </figure>
 <br/>
 <br/>
 
 <figure>
 <img src="fluxo_3.jpg">
-<h2 align = "center"><b>Histograma das <code>Δn</code> aceites para <code>k = 1</code></b></p>
+<h2 align = "center"><b>Histograma das <code>Δn</code> aceites para <code>k = 100</code></b></p>
 </figure>
 <br/>
 <br/>
