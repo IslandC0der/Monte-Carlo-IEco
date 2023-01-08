@@ -24,11 +24,38 @@ O ficheiro `simul.R` contém, adicionalmente, toda a maquinaria para gerar gráf
 Ao executar `Rscript simul.R`, a simulação é corrida em paralelo para todas as empresas, e gera-se um gráfico com a posição das empresas na curva `R` por cada `graph_step`. No final, são gerados vários gráficos relevantes, como os cortes de `R` em relação a `t` e `n` para cada empresa.
 
 ## Gráficos
-![Overview de uma simulação para 3 empresas](./evolução.gif)
-![Corte de R em t](./trabalhadores.jpg)
-![Corte de R em n](./rentabilidade.jpg)
-![Emprego marginal até à falência da 1ª empresa](./emprego.jpg)
-![Histograma das `Δn` aceites para `k = 1`](./fluxo_1.jpg)
-![Histograma das `Δn` aceites para `k = 2`](./fluxo_2.jpg)
-![Histograma das `Δn` aceites para `k = 3`](./fluxo_3.jpg)
+<figure>
+<img src="evolução.gif">
+<figcaption align = "center"><b>Overview de uma simulação para 3 empresas</b></figcaption>
+</figure>
+
+<figure>
+<img src="trabalhadores.jpg">
+<figcaption align = "center"><b>Corte de R em t</b></figcaption>
+</figure>
+
+<figure>
+<img src="rentabilidade.jpg">
+<figcaption align = "center"><b>Corte de R em n</b></figcaption>
+</figure>
+
+<figure>
+<img src="emprego.jpg">
+<figcaption align = "center"><b>Emprego marginal até à 1ª falência</b></figcaption>
+</figure>
+
+<figure>
+<img src="fluxo_1.jpg">
+<figcaption align = "center"><b>Histograma das `Δn` aceites para `k = 1`</b></figcaption>
+</figure>
+
+<figure>
+<img src="fluxo_2.jpg">
+<figcaption align = "center"><b>Histograma das `Δn` aceites para `k = 1`</b></figcaption>
+</figure>
+
+<figure>
+<img src="fluxo_3.jpg">
+<figcaption align = "center"><b>Histograma das `Δn` aceites para `k = 1`</b></figcaption>
+</figure>
 
