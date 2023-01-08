@@ -33,14 +33,14 @@ Ao executar `Rscript simul.R`, a simulação é corrida em paralelo para todas a
 
 <figure>
 <img src="trabalhadores.jpg">
-<h2 align = "center"><b>Corte de R em t</b></p>
+<h2 align = "center"><b>Corte de <code>R</code> em <code>t</code></b></p>
 </figure>
 <br/>
 <br/>
 
 <figure>
 <img src="rentabilidade.jpg">
-<h2 align = "center"><b>Corte de </code>R</code> em </code>n</code></b></p>
+<h2 align = "center"><b>Corte de <code>R</code> em <code>n</code></b></p>
 </figure>
 <br/>
 <br/>
