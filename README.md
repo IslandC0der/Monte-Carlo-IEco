@@ -17,11 +17,15 @@ Normalmente é usado em simulações de redes cristalinas, em que a função mod
 
 ### Python
 O ficheiro `simul.py` é a versão mais simples e fácil de ler, apenas contém o esqueleto da simulação.
+
 Ao executar `python simul.py`, a simulação é corrida para uma empresa, e dá apenas um output textual dos valor atual da função e dos seus parâmetros por cada iteração.
 
 ### R
 O ficheiro `simul.R` contém, adicionalmente, toda a maquinaria para gerar gráficos.
-Ao executar `Rscript simul.R`, a simulação é corrida em paralelo para todas as empresas, e gera-se um gráfico com a posição das empresas na curva `R` por cada `graph_step`. No final, são gerados vários gráficos relevantes, como os cortes de `R` em relação a `t` e `n` para cada empresa.
+
+Ao executar `Rscript simul.R`, a simulação é corrida em paralelo para todas as empresas, e gera-se um gráfico com a posição das empresas na curva `R` por cada `graph_step`, que depois podem ser combinados para formar um GIF de overview.
+
+No final, são gerados vários gráficos relevantes, como os cortes de `R` em relação a `t` e `n` para cada empresa.
 
 ## Gráficos
 <figure>
