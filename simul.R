@@ -12,7 +12,7 @@ t_step <- 0.001 # timestep
 oddness <- 30 # how radical the proposals are (i.e. the max. amount of workers that can get hired/fired per timestep)
 
 # Misc
-graph_step <- 10 # generate a health plot every nth timestep
+graph_step <- 5 # generate a health plot every nth timestep
 Colors <- c("#aa55ff", "#ffaa00", "#ff007f") # colors
 names(Colors) = K
 
@@ -94,8 +94,8 @@ while (t >= t_a) {
 	}
 	
 	
-	if (all(c(death_1, death_2, death_3) != runtime))
-		stop("Game over")
+# 	if (all(c(death_1, death_2, death_3) != runtime))
+# 		stop("Game over")
 	
 	if ((m - 1) %% graph_step == 0)
 		ggsave(paste("plot", m, ".jpg", sep=""))
@@ -142,5 +142,6 @@ d <- data.frame(k=paste(unlist(K)), lifespan=c(death_1, death_2, death_3))
 ggplot(d, aes(x=k, y=lifespan, label=lifespan, fill=k)) + xlab("k") + ylab("Iterações Sobrevividas") +
 	geom_bar(stat="identity") +
 	geom_text(size = 9) +
-	scale_fill_manual(values=Colors)
+	scale_fill_manual(values=Colors) +
+	scale_x_discrete(limits=paste(unlist(K)))
 ggsave("vida.jpg")
