@@ -2,7 +2,7 @@
 
 ## Função de modelo
 
-Começa-se por definir uma curva que relaciona a rentabilidade económica de uma empresa (`R`) em função do número de trabalhadores (`n`) e do tempo (`t`). Esta curva pode ser deduzida integrando a curva do lucro marginal dos trabalhadores (lucro adicional trazido à empresa por cada trablhador adicional) e subtraindo as despesas totais em salários.
+Começa-se por definir uma curva que relaciona a rentabilidade económica de uma empresa (`R`) em função do número de trabalhadores (`n`) e do tempo (`t`). Esta curva pode ser deduzida integrando a curva da receita marginal dos trabalhadores (receita trazida à empresa por cada trablhador adicional) e subtraindo as despesas totais em salários.
 
 ## Algoritmo
 
