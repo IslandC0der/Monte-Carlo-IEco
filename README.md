@@ -10,7 +10,7 @@ Por cada timestep, gera-se aleatoriamente uma proposta para o novo nº de trabal
 
 Se ΔR for positivo, a empresa aceita automaticamente a proposta. Se for negativo, aceita com probalidade `P = exp(ΔR/k)`, sendo `k` a constante que mede a disposição da empresa em despedir trabalhadores.
 
-Esta função de probabilidade vem de uma adaptação do [critério de Metrópolis](http://csg.sph.umich.edu/abecasis/class/2006/615.19.pdf), `P = min(1,exp(-ΔE/T))`.
+Esta função de probabilidade vem de uma adaptação do [critério de Metrópolis](http://csg.sph.umich.edu/abecasis/class/2006/615.19.pdf#page=15), `P = min(1,exp(-ΔE/T))`.
 Normalmente é usado em simulações de redes cristalinas, em que a função modelo `E` é a energia da rede cristalina, e `T` a temperatura. O critério reflete o facto de que um sistema tende a diminuir a sua energia se possível (`P = 1` se `ΔE < 0`), e que temperaturas maiores permitem aceder estados energéticos mais altos e instáveis.
 
 ## Código
