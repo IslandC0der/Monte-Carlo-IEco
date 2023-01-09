@@ -25,7 +25,7 @@ O ficheiro `simul.R` contém, adicionalmente, toda a maquinaria para gerar gráf
 
 Ao executar `Rscript simul.R`, a simulação é corrida em paralelo para todas as empresas, e gera-se um gráfico com a posição das empresas na curva `R` por cada `graph_step`, que depois podem ser combinados para formar um GIF de overview.
 
-No final, são gerados vários gráficos relevantes, como o corte de `R` em relação a `n` e `n(t)` para cada empresa.
+No final, são gerados vários gráficos relevantes, como o corte de `R` em relação a `n`, e `n(t)`, para cada empresa.
 
 ## Gráficos
 <figure>
